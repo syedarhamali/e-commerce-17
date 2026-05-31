@@ -1,0 +1,13 @@
+{
+  "name": "e-commerce-17",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OLX PRO marketplace — frontend + backend monorepo",
+  "scripts": {
+    "dev:frontend": "npm run dev --prefix e-commerce-frontend",
+    "dev:backend": "npm run dev --prefix e-commerce-backend",
+    "build:frontend": "npm run build --prefix e-commerce-frontend",
+    "start:backend": "npm run start --prefix e-commerce-backend",
+    "install:all": "npm install --prefix e-commerce-frontend && npm install --prefix e-commerce-backend"
+  }
+}
