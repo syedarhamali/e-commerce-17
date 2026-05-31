@@ -1,6 +1,47 @@
 @import 'tailwindcss';
 
+:root {
+  --brand: #059669;
+  --brand-dark: #047857;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: #f6f7f9;
+  background: #f3f4f6;
   color: #111827;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: #a7f3d0;
+  color: #064e3b;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out forwards;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
 }

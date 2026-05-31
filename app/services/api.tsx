@@ -1,12 +1,9 @@
-import axios from "axios";
+export {
+  getProducts,
+  getProductById,
+  searchProducts,
+  createProduct,
+  uploadImage,
+} from "../../services/api";
 
-const api = axios.create({
-  baseURL: "https://dummyjson.com",
-});
-
-export const getProducts = async () => {
-  const res = await api.get("/products?limit=30");
-  return res.data.products;
-};
-
-export default api;
+export { default } from "../../services/api";

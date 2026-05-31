@@ -1,13 +1,14 @@
+import PageShell from "./components/PageShell";
 import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
+import Featured from "./components/Featured";
 import ProductGrid from "./components/ProductGrid";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-100">
-      <Navbar />
+    <PageShell>
       <Hero />
+      <Featured />
       <ProductGrid />
-    </main>
+    </PageShell>
   );
 }
