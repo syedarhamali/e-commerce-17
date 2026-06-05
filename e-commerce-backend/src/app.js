@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const productRoutes = require("./routes/productRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
+const mongoDbRoutes = require("./routes/mongodbRoutes");
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.get("/", (_req, res) => {
 
 app.use("/products", productRoutes);
 app.use("/upload", uploadRoutes);
+app.use("/mongodb" , mongoDbRoutes)
 
 app.use((err, _req, res, _next) => {
   if (err) {
