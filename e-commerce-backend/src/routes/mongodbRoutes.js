@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const express = require("express")
+const bcrypt = require("bcrypt")
 
 const router = express.Router()
 
@@ -37,26 +38,30 @@ const userSchema = mongoose.Schema({
     }
 )
 
-const User = mongoose.model("User" , userSchema)
+const User = mongoose.model("User", userSchema)
 
 
-router.get("/" , async (req , res) =>{
-  const users =  await User.find()
+router.get("/", async (req, res) => {
+    const users = await User.find()
 
-  res.json(users).statusCode(200)
+    res.json(users).statusCode(200)
 })
 
 
-router.post("/" , async (req , res) =>{
+router.post("/", async (req, res) => {
+    const { userId, firstName, lastName, email, passwordHash } = req.body
+
+    const hashedPassword = await bcrypt.hash(passwordHash, 10);
+
     const user = User.create({
-        userId: 5,
-        firstName: 'Arham',
-        lastName: 'Ali',
-        email: 'arhamali12345@gmail.com',
-        passwordHash: '1234567890',
+        userId,
+        firstName,
+        lastName,
+        email,
+        passwordHash: hashedPassword,
     })
 
-    res.status(201).json({message: '"user created successfully!" ' , ...user, passwordHash: 'nh btaunga'})
+    res.status(201).json({ message: '"user created successfully!" ', ...user, passwordHash: 'nh btaunga' })
 })
 
 module.exports = router
